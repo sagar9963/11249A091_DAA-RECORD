@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+void towers(int num, char source, char dest, char spare);
+
+int main() {
+    int num;
+    printf("Enter the number of disks: ");
+    scanf("%d", &num);
+
+    printf("The sequence of moves involved in Tower of Hanoi:\n");
+    towers(num, 'A', 'C', 'B');
+
+    printf("\n");
+    return 0;
+}
+
+void towers(int num, char source, char dest, char spare) {
+    if (num == 1) {
+        printf("\n Move the disc 1 from source %c to dest %c", source, dest);
+        return;
+    }
+
+    towers(num - 1, source, spare, dest);
+    printf("\n Move the disc %d from source %c to dest %c", num, source, dest);
+    towers(num - 1, spare, dest, source);
+}
